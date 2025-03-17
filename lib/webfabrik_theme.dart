@@ -1,4 +1,4 @@
-export 'src/theme/location_history_theme.dart';
+export 'src/theme/webfabrik_theme.dart';
 export 'src/widgets/custom_cupertino_button.dart';
 export 'src/widgets/custom_cupertino_text_button.dart';
 export 'src/widgets/custom_cupertino_text_field.dart';

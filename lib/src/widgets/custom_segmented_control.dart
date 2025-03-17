@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:webfabrik_theme/src/theme/location_history_theme.dart';
+import 'package:webfabrik_theme/src/theme/webfabrik_theme.dart';
 
 class CustomSegmentedControlItem<T> {
   const CustomSegmentedControlItem({required this.label, required this.value});

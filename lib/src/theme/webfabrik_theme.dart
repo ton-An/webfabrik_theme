@@ -10,14 +10,14 @@ part '_default_spacing.dart';
 part '_default_text_styles.dart';
 part '_inherited_location_history_theme.dart';
 part '_text_theme_defaults_builder.dart';
-part 'location_history_color_theme_data.dart';
-part 'location_history_colors.dart';
-part 'location_history_durations_theme_data.dart';
-part 'location_history_misc_theme_data.dart';
-part 'location_history_radii_theme_data.dart';
-part 'location_history_spacing_theme_data.dart';
-part 'location_history_text_theme_data.dart';
-part 'location_history_theme_data.dart';
+part 'webfabrik_color_theme_data.dart';
+part 'webfabrik_colors.dart';
+part 'webfabrik_durations_theme_data.dart';
+part 'webfabrik_misc_theme_data.dart';
+part 'webfabrik_radii_theme_data.dart';
+part 'webfabrik_spacing_theme_data.dart';
+part 'webfabrik_text_theme_data.dart';
+part 'webfabrik_theme_data.dart';
 
 /// __Location History Theme__
 ///

@@ -1,4 +1,4 @@
-part of 'location_history_theme.dart';
+part of 'webfabrik_theme.dart';
 
 /// __Location History Durations Theme Data__
 ///
