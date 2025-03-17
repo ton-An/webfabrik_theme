@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:webfabrik_theme/src/theme/location_history_theme.dart';
+import 'package:webfabrik_theme/src/theme/webfabrik_theme.dart';
 
 class SmallIconButton extends StatefulWidget {
   const SmallIconButton({
@@ -7,11 +7,13 @@ class SmallIconButton extends StatefulWidget {
     required this.icon,
     required this.onPressed,
     this.alignmentOffset = Offset.zero,
+    this.backgroundColor,
   });
 
   final IconData icon;
   final VoidCallback onPressed;
   final Offset alignmentOffset;
+  final Color? backgroundColor;
 
   @override
   State<SmallIconButton> createState() => _SmallIconButtonState();
@@ -73,7 +75,9 @@ class _SmallIconButtonState extends State<SmallIconButton>
           padding: EdgeInsets.all(theme.spacing.xSmall),
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: theme.colors.translucentBackgroundContrast,
+            color:
+                widget.backgroundColor ??
+                theme.colors.translucentBackgroundContrast,
           ),
           child: Transform.translate(
             offset: widget.alignmentOffset,
