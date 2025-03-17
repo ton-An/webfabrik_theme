@@ -6,9 +6,9 @@ class EdgeFadeOptions {
   final double halfWayPoint;
 
   const EdgeFadeOptions({
-    required this.enabled,
-    required this.heightFactor,
-    required this.halfWayPoint,
+    this.enabled = true,
+    this.heightFactor = 0.1,
+    this.halfWayPoint = 0.5,
   });
 }
 
@@ -24,11 +24,7 @@ class EdgeFade extends StatelessWidget {
   final EdgeFadeOptions topOptions;
   final EdgeFadeOptions bottomOptions;
 
-  static const EdgeFadeOptions _defaultOptions = EdgeFadeOptions(
-    enabled: true,
-    heightFactor: 0.1,
-    halfWayPoint: 0.5,
-  );
+  static const EdgeFadeOptions _defaultOptions = EdgeFadeOptions();
 
   @override
   Widget build(BuildContext context) {
