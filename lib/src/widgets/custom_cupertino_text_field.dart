@@ -6,12 +6,14 @@ class CustomCupertinoTextField extends StatelessWidget {
     required this.hint,
     required this.onChanged,
     this.obscureText = false,
+    this.controller,
     super.key,
   });
 
   final String hint;
   final bool obscureText;
   final Function(String) onChanged;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +22,7 @@ class CustomCupertinoTextField extends StatelessWidget {
     return SizedBox(
       height: 44,
       child: CupertinoTextField(
+        controller: controller,
         placeholder: hint,
         obscureText: obscureText,
         style: theme.text.body,
