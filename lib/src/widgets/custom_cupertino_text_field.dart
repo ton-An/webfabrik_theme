@@ -6,12 +6,14 @@ class CustomCupertinoTextField extends StatelessWidget {
     required this.hint,
     required this.onChanged,
     this.obscureText = false,
+    this.autofillHints = const [],
     this.controller,
     super.key,
   });
 
   final String hint;
   final bool obscureText;
+  final List<String> autofillHints;
   final Function(String) onChanged;
   final TextEditingController? controller;
 
@@ -35,6 +37,7 @@ class CustomCupertinoTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(theme.radii.field),
           color: theme.colors.translucentBackgroundContrast,
         ),
+        autofillHints: autofillHints,
         onChanged: onChanged,
       ),
     );
