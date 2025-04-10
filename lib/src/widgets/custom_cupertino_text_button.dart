@@ -8,11 +8,13 @@ class CustomCupertinoTextButton extends StatelessWidget {
   const CustomCupertinoTextButton({
     super.key,
     required this.text,
+    this.color,
     this.disabledColor,
     this.onPressed,
   });
 
   final String text;
+  final Color? color;
   final Color? disabledColor;
   final VoidCallback? onPressed;
 
@@ -21,6 +23,7 @@ class CustomCupertinoTextButton extends StatelessWidget {
     final WebfabrikThemeData theme = WebfabrikTheme.of(context);
 
     return CustomCupertinoButton(
+      color: color,
       disabledColor: disabledColor,
       onPressed: onPressed,
       child: Text(

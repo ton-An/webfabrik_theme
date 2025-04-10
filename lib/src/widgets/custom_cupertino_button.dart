@@ -5,11 +5,13 @@ class CustomCupertinoButton extends StatelessWidget {
   const CustomCupertinoButton({
     super.key,
     required this.child,
+    this.color,
     this.disabledColor,
     this.onPressed,
   });
 
   final Widget child;
+  final Color? color;
   final Color? disabledColor;
   final VoidCallback? onPressed;
 
@@ -18,7 +20,7 @@ class CustomCupertinoButton extends StatelessWidget {
     final WebfabrikThemeData theme = WebfabrikTheme.of(context);
 
     return CupertinoButton(
-      color: theme.colors.primary.withValues(alpha: .8),
+      color: color ?? theme.colors.primary.withValues(alpha: .8),
       disabledColor: disabledColor ?? theme.colors.disabledButton,
       borderRadius: BorderRadius.circular(theme.radii.button),
       minSize: 52,
