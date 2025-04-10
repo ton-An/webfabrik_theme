@@ -7,6 +7,7 @@ class CustomCupertinoTextField extends StatelessWidget {
     required this.onChanged,
     this.obscureText = false,
     this.autofillHints = const [],
+    this.keyboardType,
     this.controller,
     super.key,
   });
@@ -14,6 +15,7 @@ class CustomCupertinoTextField extends StatelessWidget {
   final String hint;
   final bool obscureText;
   final List<String> autofillHints;
+  final TextInputType? keyboardType;
   final Function(String) onChanged;
   final TextEditingController? controller;
 
@@ -38,6 +40,7 @@ class CustomCupertinoTextField extends StatelessWidget {
           color: theme.colors.translucentBackgroundContrast,
         ),
         autofillHints: autofillHints,
+        keyboardType: keyboardType,
         onChanged: onChanged,
       ),
     );
