@@ -9,12 +9,14 @@ class CustomCupertinoTextButton extends StatelessWidget {
     super.key,
     required this.text,
     this.color,
+    this.textColor,
     this.disabledColor,
     this.onPressed,
   });
 
   final String text;
   final Color? color;
+  final Color? textColor;
   final Color? disabledColor;
   final VoidCallback? onPressed;
 
@@ -30,7 +32,7 @@ class CustomCupertinoTextButton extends StatelessWidget {
         text,
         textAlign: TextAlign.center,
         style: theme.text.headline.copyWith(
-          color: theme.colors.primaryContrast,
+          color: textColor ?? theme.colors.primaryContrast,
         ),
       ),
     );
