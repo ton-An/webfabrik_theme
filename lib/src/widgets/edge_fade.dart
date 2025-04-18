@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 class EdgeFadeOptions {
-  final bool enabled;
-  final double heightFactor;
-  final double halfWayPoint;
 
   const EdgeFadeOptions({
     this.enabled = true,
     this.heightFactor = 0.1,
     this.halfWayPoint = 0.5,
   });
+  final bool enabled;
+  final double heightFactor;
+  final double halfWayPoint;
 }
 
 class EdgeFade extends StatelessWidget {
@@ -34,7 +34,7 @@ class EdgeFade extends StatelessWidget {
     if (topOptions.enabled) {
       colors.add(Colors.transparent);
       stops.add(0.0);
-      colors.add(Color(0x80000000).withValues(alpha: topOptions.halfWayPoint));
+      colors.add(const Color(0x80000000).withValues(alpha: topOptions.halfWayPoint));
       stops.add(topOptions.heightFactor / 2);
       colors.add(Colors.black);
       stops.add(topOptions.heightFactor);
@@ -44,7 +44,7 @@ class EdgeFade extends StatelessWidget {
       colors.add(Colors.black);
       stops.add(1 - bottomOptions.heightFactor);
       colors.add(
-        Color(0x80000000).withValues(alpha: bottomOptions.halfWayPoint),
+        const Color(0x80000000).withValues(alpha: bottomOptions.halfWayPoint),
       );
       stops.add(1 - bottomOptions.heightFactor / 2);
       colors.add(Colors.transparent);

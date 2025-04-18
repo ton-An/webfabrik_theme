@@ -63,7 +63,7 @@ class CustomSegmentedControl<T> extends StatelessWidget {
                     },
                     child: Center(
                       child: AnimatedDefaultTextStyle(
-                        duration: Duration(milliseconds: 160),
+                        duration: const Duration(milliseconds: 160),
                         curve: Curves.easeOut,
                         style: theme.text.footnote.copyWith(
                           fontWeight:
