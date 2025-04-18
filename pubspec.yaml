@@ -1,7 +1,7 @@
 name: webfabrik_theme
 description: "A Flutter theme package that provides a cohesive, iOS-inspired design system with predefined styles, spacing, and custom widgets to create beautiful and consistent user interfaces."
 version: 0.0.1
-homepage:
+repository: "https://github.com/ton-An/webfabrik_theme"
 
 environment:
   sdk: ^3.7.0
