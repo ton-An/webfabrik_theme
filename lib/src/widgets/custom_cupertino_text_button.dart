@@ -11,6 +11,7 @@ class CustomCupertinoTextButton extends StatelessWidget {
     this.color,
     this.textColor,
     this.disabledColor,
+    this.isLoading,
     this.onPressed,
   });
 
@@ -18,6 +19,7 @@ class CustomCupertinoTextButton extends StatelessWidget {
   final Color? color;
   final Color? textColor;
   final Color? disabledColor;
+  final bool? isLoading;
   final VoidCallback? onPressed;
 
   @override
@@ -28,6 +30,7 @@ class CustomCupertinoTextButton extends StatelessWidget {
       color: color,
       disabledColor: disabledColor,
       onPressed: onPressed,
+      isLoading: isLoading,
       child: Text(
         text,
         textAlign: TextAlign.center,

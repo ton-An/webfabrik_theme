@@ -1,18 +1,22 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:webfabrik_theme/src/theme/webfabrik_theme.dart';
 
 class CustomCupertinoButton extends StatelessWidget {
   const CustomCupertinoButton({
     super.key,
+
     required this.child,
     this.color,
     this.disabledColor,
+    this.isLoading,
     this.onPressed,
   });
 
   final Widget child;
   final Color? color;
   final Color? disabledColor;
+  final bool? isLoading;
   final VoidCallback? onPressed;
 
   @override
@@ -25,7 +29,27 @@ class CustomCupertinoButton extends StatelessWidget {
       borderRadius: BorderRadius.circular(theme.radii.button),
       minSize: 52,
       onPressed: onPressed,
-      child: child,
+      child: AnimatedSwitcher(
+        duration: Duration(milliseconds: 300),
+        reverseDuration: Duration(milliseconds: 140),
+        switchInCurve: Curves.easeInOut,
+        switchOutCurve: Curves.easeInOut,
+        transitionBuilder: (child, animation) {
+          return FadeTransition(opacity: animation, child: child);
+        },
+        child:
+            isLoading ?? false
+                ? SizedBox(
+                  height: 22,
+                  width: 22,
+                  child: CircularProgressIndicator(
+                    color: theme.colors.background,
+                    strokeCap: StrokeCap.round,
+                    strokeWidth: 4,
+                  ),
+                )
+                : child,
+      ),
     );
   }
 }
