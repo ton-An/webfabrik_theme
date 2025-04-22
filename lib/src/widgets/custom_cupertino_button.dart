@@ -30,8 +30,8 @@ class CustomCupertinoButton extends StatelessWidget {
       minSize: 52,
       onPressed: onPressed,
       child: AnimatedSwitcher(
-        duration: Duration(milliseconds: 300),
-        reverseDuration: Duration(milliseconds: 140),
+        duration: const Duration(milliseconds: 300),
+        reverseDuration: const Duration(milliseconds: 140),
         switchInCurve: Curves.easeInOut,
         switchOutCurve: Curves.easeInOut,
         transitionBuilder: (child, animation) {
