@@ -31,4 +31,13 @@ class WebfabrikColors {
   static const Color hint = Color.fromARGB(255, 142, 142, 147);
   static const Color disabled = Color.fromARGB(20, 116, 116, 128);
   static const Color transparent = Color(0x00000000);
+  static const List<Color> timelineGradient = [
+    Color.fromARGB(255, 156, 39, 176),
+    Color.fromARGB(255, 33, 150, 243),
+    Color.fromARGB(255, 0, 150, 136),
+    Color.fromARGB(255, 76, 175, 80),
+    Color.fromARGB(255, 255, 235, 59),
+    Color.fromARGB(255, 255, 152, 0),
+    Color.fromARGB(255, 244, 67, 54),
+  ];
 }

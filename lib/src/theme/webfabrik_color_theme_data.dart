@@ -31,6 +31,7 @@ class WebfabrikColorThemeData {
     this.backgroundContrast = WebfabrikColors.black,
     this.translucentBackgroundContrast =
         WebfabrikColors.translucentBackgroundContrast,
+    this.timelineGradient = WebfabrikColors.timelineGradient,
   });
 
   final Color primary;
@@ -53,4 +54,5 @@ class WebfabrikColorThemeData {
   final Color transparent;
   final Color backgroundContrast;
   final Color translucentBackgroundContrast;
+  final List<Color> timelineGradient;
 }
