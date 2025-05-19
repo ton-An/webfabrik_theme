@@ -15,4 +15,7 @@ class _DefaultDurations {
   static const Duration medium = Duration(milliseconds: 400);
   static const Duration xMedium = Duration(milliseconds: 500);
   static const Duration xxMedium = Duration(milliseconds: 600);
+  static const Duration long = Duration(milliseconds: 800);
+  static const Duration xLong = Duration(milliseconds: 1000);
+  static const Duration xxLong = Duration(milliseconds: 1200);
 }

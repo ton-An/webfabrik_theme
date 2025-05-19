@@ -14,6 +14,9 @@ class WebfabrikDurationsThemeData {
     Duration? medium,
     Duration? xMedium,
     Duration? xxMedium,
+    Duration? long,
+    Duration? xLong,
+    Duration? xxLong,
   }) : this._(
          tiny ?? _DefaultDurations.tiny,
          xTiny ?? _DefaultDurations.xTiny,
@@ -24,6 +27,9 @@ class WebfabrikDurationsThemeData {
          medium ?? _DefaultDurations.medium,
          xMedium ?? _DefaultDurations.xMedium,
          xxMedium ?? _DefaultDurations.xxMedium,
+         long ?? _DefaultDurations.long,
+         xLong ?? _DefaultDurations.xLong,
+         xxLong ?? _DefaultDurations.xxLong,
        );
 
   const WebfabrikDurationsThemeData._(
@@ -36,6 +42,9 @@ class WebfabrikDurationsThemeData {
     this._medium,
     this._xMedium,
     this._xxMedium,
+    this._long,
+    this._xLong,
+    this._xxLong,
   );
 
   final Duration? _tiny;
@@ -47,6 +56,9 @@ class WebfabrikDurationsThemeData {
   final Duration? _medium;
   final Duration? _xMedium;
   final Duration? _xxMedium;
+  final Duration? _long;
+  final Duration? _xLong;
+  final Duration? _xxLong;
 
   Duration get tiny => _tiny ?? _DefaultDurations.tiny;
   Duration get xTiny => _xTiny ?? _DefaultDurations.xTiny;
@@ -57,4 +69,7 @@ class WebfabrikDurationsThemeData {
   Duration get medium => _medium ?? _DefaultDurations.medium;
   Duration get xMedium => _xMedium ?? _DefaultDurations.xMedium;
   Duration get xxMedium => _xxMedium ?? _DefaultDurations.xxMedium;
+  Duration get long => _long ?? _DefaultDurations.long;
+  Duration get xLong => _xLong ?? _DefaultDurations.xLong;
+  Duration get xxLong => _xxLong ?? _DefaultDurations.xxLong;
 }
