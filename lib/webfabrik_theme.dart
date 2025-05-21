@@ -6,4 +6,5 @@ export 'src/widgets/custom_segmented_control.dart';
 export 'src/widgets/dot.dart';
 export 'src/widgets/edge_fade.dart';
 export 'src/widgets/gaps/gaps.dart';
+export 'src/widgets/loading_indicator.dart';
 export 'src/widgets/small_icon_button.dart';

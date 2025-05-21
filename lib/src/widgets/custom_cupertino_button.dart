@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:webfabrik_theme/src/theme/webfabrik_theme.dart';
+import 'package:webfabrik_theme/src/widgets/loading_indicator.dart';
 
 class CustomCupertinoButton extends StatelessWidget {
   const CustomCupertinoButton({
@@ -37,18 +37,7 @@ class CustomCupertinoButton extends StatelessWidget {
         transitionBuilder: (child, animation) {
           return FadeTransition(opacity: animation, child: child);
         },
-        child:
-            isLoading ?? false
-                ? SizedBox(
-                  height: 22,
-                  width: 22,
-                  child: CircularProgressIndicator(
-                    color: theme.colors.background,
-                    strokeCap: StrokeCap.round,
-                    strokeWidth: 4,
-                  ),
-                )
-                : child,
+        child: isLoading ?? false ? const LoadingIndicator() : child,
       ),
     );
   }
