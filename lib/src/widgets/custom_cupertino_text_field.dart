@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:smooth_corner/smooth_corner.dart';
 import 'package:webfabrik_theme/src/theme/webfabrik_theme.dart';
 
 class CustomCupertinoTextField extends StatelessWidget {
@@ -23,25 +24,28 @@ class CustomCupertinoTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     final WebfabrikThemeData theme = WebfabrikTheme.of(context);
 
-    return SizedBox(
-      height: 44,
-      child: CupertinoTextField(
-        controller: controller,
-        placeholder: hint,
-        obscureText: obscureText,
-        style: theme.text.body,
-        placeholderStyle: theme.text.body.copyWith(
-          color: theme.colors.text.withValues(alpha: .5),
+    return SmoothClipRRect(
+      borderRadius: BorderRadius.circular(theme.radii.button),
+      child: SizedBox(
+        height: 44,
+        child: CupertinoTextField(
+          controller: controller,
+          placeholder: hint,
+          obscureText: obscureText,
+          style: theme.text.body,
+          placeholderStyle: theme.text.body.copyWith(
+            color: theme.colors.text.withValues(alpha: .5),
+          ),
+          cursorHeight: 20,
+          padding: EdgeInsets.symmetric(horizontal: theme.spacing.medium + 2),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.zero,
+            color: theme.colors.translucentBackgroundContrast,
+          ),
+          autofillHints: autofillHints,
+          keyboardType: keyboardType,
+          onChanged: onChanged,
         ),
-        cursorHeight: 20,
-        padding: EdgeInsets.symmetric(horizontal: theme.spacing.medium + 2),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(theme.radii.field),
-          color: theme.colors.translucentBackgroundContrast,
-        ),
-        autofillHints: autofillHints,
-        keyboardType: keyboardType,
-        onChanged: onChanged,
       ),
     );
   }

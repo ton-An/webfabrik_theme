@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smooth_corner/smooth_corner.dart';
 import 'package:webfabrik_theme/src/theme/webfabrik_theme.dart';
 
 class CustomSegmentedControlItem<T> {
@@ -27,62 +28,60 @@ class CustomSegmentedControl<T> extends StatelessWidget {
       (item) => item.value == selectedValue,
     );
 
-    return Container(
-      height: 44,
-      decoration: BoxDecoration(
+    return SmoothClipRRect(
+      borderRadius: BorderRadius.circular(theme.radii.button),
+      child: Container(
+        height: 44,
         color: theme.colors.translucentBackgroundContrast,
-        borderRadius: BorderRadius.circular(theme.radii.small),
-      ),
-      child: Stack(
-        children: [
-          AnimatedAlign(
-            duration: const Duration(milliseconds: 220),
-            curve: Curves.easeInOut,
-            alignment: Alignment(
-              -1 + (2 * selectedIndex / (items.length - 1)),
-              0,
-            ),
-            child: FractionallySizedBox(
-              widthFactor: 1 / items.length,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: theme.colors.primary,
-                  borderRadius: BorderRadius.circular(theme.radii.small),
+        child: Stack(
+          children: [
+            AnimatedAlign(
+              duration: const Duration(milliseconds: 220),
+              curve: Curves.easeInOut,
+              alignment: Alignment(
+                -1 + (2 * selectedIndex / (items.length - 1)),
+                0,
+              ),
+              child: SmoothClipRRect(
+                borderRadius: BorderRadius.circular(theme.radii.button),
+                child: FractionallySizedBox(
+                  widthFactor: 1 / items.length,
+                  child: Container(color: theme.colors.primary),
                 ),
               ),
             ),
-          ),
-          Row(
-            children: [
-              for (int i = 0; i < items.length; i++)
-                Expanded(
-                  child: GestureDetector(
-                    behavior: HitTestBehavior.translucent,
-                    onTap: () {
-                      onChanged(items[i].value);
-                    },
-                    child: Center(
-                      child: AnimatedDefaultTextStyle(
-                        duration: const Duration(milliseconds: 160),
-                        curve: Curves.easeOut,
-                        style: theme.text.footnote.copyWith(
-                          fontWeight:
-                              i == selectedIndex
-                                  ? FontWeight.w600
-                                  : FontWeight.w400,
-                          color:
-                              i == selectedIndex
-                                  ? theme.colors.background
-                                  : theme.colors.hint,
+            Row(
+              children: [
+                for (int i = 0; i < items.length; i++)
+                  Expanded(
+                    child: GestureDetector(
+                      behavior: HitTestBehavior.translucent,
+                      onTap: () {
+                        onChanged(items[i].value);
+                      },
+                      child: Center(
+                        child: AnimatedDefaultTextStyle(
+                          duration: const Duration(milliseconds: 160),
+                          curve: Curves.easeOut,
+                          style: theme.text.footnote.copyWith(
+                            fontWeight:
+                                i == selectedIndex
+                                    ? FontWeight.w600
+                                    : FontWeight.w400,
+                            color:
+                                i == selectedIndex
+                                    ? theme.colors.background
+                                    : theme.colors.hint,
+                          ),
+                          child: Text(items[i].label),
                         ),
-                        child: Text(items[i].label),
                       ),
                     ),
                   ),
-                ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
