@@ -9,6 +9,7 @@ export 'src/widgets/custom_cupertino_text_field.dart';
 export 'src/widgets/custom_segmented_control.dart';
 export 'src/widgets/dot.dart';
 export 'src/widgets/edge_fade.dart';
+export 'src/widgets/fade_tap_detector.dart';
 export 'src/widgets/gaps/gaps.dart';
 export 'src/widgets/in_app_notification/in_app_notification_listener.dart';
 export 'src/widgets/in_app_notification/in_app_notification_widget.dart';
