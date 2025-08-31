@@ -115,7 +115,16 @@ class _DismissibleState extends State<_Dismissible>
                 state is InAppNotificationDelivering
                     ? _entryAnimation
                     : _moveAnimation,
-            child: KeyedSubtree(key: _contentKey, child: widget.child),
+            child: KeyedSubtree(
+              key: _contentKey,
+              child: MouseRegion(
+                cursor:
+                    _isActive
+                        ? SystemMouseCursors.grabbing
+                        : SystemMouseCursors.grab,
+                child: widget.child,
+              ),
+            ),
           );
         },
       ),
