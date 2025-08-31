@@ -29,7 +29,15 @@ class InAppNotificationListener extends StatelessWidget {
         if (state is InAppNotificationInitiating) {
           final OverlayEntry overlayEntry = OverlayEntry(
             builder: (context) {
-              return InAppNotificationWidget(notification: state.notification);
+              return Align(
+                alignment: Alignment.topRight,
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 400),
+                  child: InAppNotificationWidget(
+                    notification: state.notification,
+                  ),
+                ),
+              );
             },
           );
           context.read<InAppNotificationCubit>().deliverNotification(
