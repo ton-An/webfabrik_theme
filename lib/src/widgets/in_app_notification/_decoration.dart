@@ -15,7 +15,7 @@ class _Decoration extends StatelessWidget {
         filter: theme.misc.blurFilter,
         child: Container(
           decoration: BoxDecoration(
-            color: theme.colors.background.withValues(alpha: .6),
+            color: theme.colors.translucentBackground,
             borderRadius: BorderRadius.circular(theme.radii.medium),
           ),
           child: child,
