@@ -1,10 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:webfabrik_theme/src/cubit/in_app_notification.dart';
-import 'package:webfabrik_theme/src/cubit/in_app_notification_cubit.dart';
-import 'package:webfabrik_theme/src/cubit/in_app_notification_states.dart';
-import 'package:webfabrik_theme/src/widgets/fade_tap_detector.dart';
+import 'package:pointer_interceptor/pointer_interceptor.dart';
 import 'package:webfabrik_theme/webfabrik_theme.dart';
 
 part '_content.dart';
@@ -48,53 +45,56 @@ class InAppNotificationWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final WebfabrikThemeData theme = WebfabrikTheme.of(context);
 
-    return FadeTapDetector(
-      behavior: HitTestBehavior.deferToChild,
-      onLongPress: () {
-        if (notification is InAppFailureNotification) {
-          Clipboard.setData(
-            ClipboardData(
-              text:
-                  (notification as InAppFailureNotification).failure.toString(),
-            ),
-          );
-        }
-      },
-      child: _FadeWrapper(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            _Dismissible(
-              dismissThreshold: .17,
-              onDismissed:
-                  () =>
-                      context
-                          .read<InAppNotificationCubit>()
-                          .dismissNotification(),
-              movementDuration: theme.durations.xMedium,
-              reverseMovementDuration: theme.durations.xHuge,
-              entryDuration: theme.durations.long,
-              key: GlobalKey(),
-              child: SafeArea(
-                bottom: false,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: theme.spacing.medium,
-                    vertical: theme.spacing.small,
-                  ),
-                  child: _Decoration(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: theme.spacing.xMedium,
-                        vertical: theme.spacing.medium,
+    return PointerInterceptor(
+      child: FadeTapDetector(
+        behavior: HitTestBehavior.deferToChild,
+        onLongPress: () {
+          if (notification is InAppFailureNotification) {
+            Clipboard.setData(
+              ClipboardData(
+                text:
+                    (notification as InAppFailureNotification).failure
+                        .toString(),
+              ),
+            );
+          }
+        },
+        child: _FadeWrapper(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              _Dismissible(
+                dismissThreshold: .17,
+                onDismissed:
+                    () =>
+                        context
+                            .read<InAppNotificationCubit>()
+                            .dismissNotification(),
+                movementDuration: theme.durations.xMedium,
+                reverseMovementDuration: theme.durations.xHuge,
+                entryDuration: theme.durations.long,
+                key: GlobalKey(),
+                child: SafeArea(
+                  bottom: false,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: theme.spacing.medium,
+                      vertical: theme.spacing.small,
+                    ),
+                    child: _Decoration(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: theme.spacing.xMedium,
+                          vertical: theme.spacing.medium,
+                        ),
+                        child: _Content(notification: notification),
                       ),
-                      child: _Content(notification: notification),
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
