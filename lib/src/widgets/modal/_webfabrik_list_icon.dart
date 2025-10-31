@@ -1,7 +1,7 @@
 part of 'webfabrik_modal.dart';
 
-abstract class WebfabrikListIcon extends StatelessWidget {
-  const WebfabrikListIcon({required this.iconData});
+class WebfabrikListIcon extends StatelessWidget {
+  const WebfabrikListIcon({super.key, required this.iconData});
 
   final WebfabrikIconData iconData;
 
