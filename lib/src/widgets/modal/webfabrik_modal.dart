@@ -35,6 +35,8 @@ class WebfabrikModal extends StatefulWidget {
     required this.title,
     required this.secondaryButtons,
     required this.legend,
+    this.displayBackButton = true,
+    this.onBackPressed,
   });
 
   /// The maximum height of the modal, occupying the full screen.
@@ -55,6 +57,12 @@ class WebfabrikModal extends StatefulWidget {
 
   /// The secondary buttons of the modal.
   final List<Widget> secondaryButtons;
+
+  /// Whether to display the back button.
+  final bool displayBackButton;
+
+  /// The callback to be called when the back button is pressed.
+  final VoidCallback? onBackPressed;
 
   final Widget legend;
 
@@ -81,90 +89,88 @@ class _WebfabrikModalState extends State<WebfabrikModal> {
   Widget build(BuildContext context) {
     final WebfabrikThemeData theme = WebfabrikTheme.of(context);
 
-    return Expanded(
-      child: DraggableScrollableSheet(
-        initialChildSize: WebfabrikModal.mediumModalHeight,
-        minChildSize: WebfabrikModal.smallModalHeight,
-        maxChildSize: WebfabrikModal.largeModalHeight,
-        snap: true,
-        snapSizes: const [
-          WebfabrikModal.smallModalHeight,
-          WebfabrikModal.largeModalHeight,
-        ],
-        controller: _draggableScrollableController,
-        snapAnimationDuration: theme.durations.medium,
-        builder:
-            (context, scrollController) => Column(
-              children: [
-                AnimatedOpacity(
-                  opacity: _shouldDisplayLegend() ? 1 : 0,
-                  duration: theme.durations.short,
-                  curve: Curves.easeOut,
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: theme.spacing.medium,
-                    ),
-                    child: widget.legend,
+    return DraggableScrollableSheet(
+      initialChildSize: WebfabrikModal.mediumModalHeight,
+      minChildSize: WebfabrikModal.smallModalHeight,
+      maxChildSize: WebfabrikModal.largeModalHeight,
+      snap: true,
+      snapSizes: const [
+        WebfabrikModal.smallModalHeight,
+        WebfabrikModal.largeModalHeight,
+      ],
+      controller: _draggableScrollableController,
+      snapAnimationDuration: theme.durations.medium,
+      builder:
+          (context, scrollController) => Column(
+            children: [
+              AnimatedOpacity(
+                opacity: _shouldDisplayLegend() ? 1 : 0,
+                duration: theme.durations.short,
+                curve: Curves.easeOut,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: theme.spacing.medium,
                   ),
+                  child: widget.legend,
                 ),
-                const SmallGap(),
-                Expanded(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.vertical(
-                      top: Radius.circular(theme.radii.xLarge),
-                    ),
-                    child: BackdropFilter(
-                      filter: theme.misc.blurFilter,
-                      child: Container(
-                        color: theme.colors.translucentBackground,
-                        child: Column(
-                          children: [
-                            Listener(
-                              behavior: HitTestBehavior.translucent,
-                              onPointerDown:
-                                  (event) =>
-                                      _verticalDragStart(event.position.dy),
-                              onPointerUp:
-                                  (_) => _verticalDragEnd(theme: theme),
-                              onPointerMove: (event) {
-                                _verticalDragUpdate(
-                                  event.delta.dy,
-                                  event.position.dy,
-                                );
-                              },
-                              onPointerCancel:
-                                  (_) => _verticalDragEnd(theme: theme),
-                              child: Padding(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: theme.spacing.medium,
-                                ),
-                                child: Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.stretch,
-                                  children: [
-                                    const MediumGap(),
-                                    const _ModalHandle(),
-                                    const MediumGap(),
-                                    _Header(
-                                      title: widget.title,
-                                      secondaryButtons: widget.secondaryButtons,
-                                    ),
-                                  ],
-                                ),
+              ),
+              const SmallGap(),
+              Expanded(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(theme.radii.xLarge),
+                  ),
+                  child: BackdropFilter(
+                    filter: theme.misc.blurFilter,
+                    child: Container(
+                      color: theme.colors.translucentBackground,
+                      child: Column(
+                        children: [
+                          Listener(
+                            behavior: HitTestBehavior.translucent,
+                            onPointerDown:
+                                (event) =>
+                                    _verticalDragStart(event.position.dy),
+                            onPointerUp: (_) => _verticalDragEnd(theme: theme),
+                            onPointerMove: (event) {
+                              _verticalDragUpdate(
+                                event.delta.dy,
+                                event.position.dy,
+                              );
+                            },
+                            onPointerCancel:
+                                (_) => _verticalDragEnd(theme: theme),
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: theme.spacing.medium,
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: [
+                                  const MediumGap(),
+                                  const _ModalHandle(),
+                                  const MediumGap(),
+                                  _Header(
+                                    title: widget.title,
+                                    displayBackButton: widget.displayBackButton,
+                                    secondaryButtons: widget.secondaryButtons,
+                                    onBackPressed: widget.onBackPressed,
+                                  ),
+                                ],
                               ),
                             ),
-                            Expanded(
-                              child: widget.builder(context, scrollController),
-                            ),
-                          ],
-                        ),
+                          ),
+                          Expanded(
+                            child: widget.builder(context, scrollController),
+                          ),
+                        ],
                       ),
                     ),
                   ),
                 ),
-              ],
-            ),
-      ),
+              ),
+            ],
+          ),
     );
   }
 
