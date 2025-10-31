@@ -1,10 +1,17 @@
 part of 'webfabrik_modal.dart';
 
 class _Header extends StatelessWidget {
-  const _Header({required this.title, required this.secondaryButtons});
+  const _Header({
+    required this.title,
+    required this.secondaryButtons,
+    required this.displayBackButton,
+    required this.onBackPressed,
+  });
 
   final String title;
   final List<Widget> secondaryButtons;
+  final bool displayBackButton;
+  final VoidCallback? onBackPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -19,15 +26,25 @@ class _Header extends StatelessWidget {
         borderRadius: BorderRadius.circular(theme.radii.medium),
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Padding(
-            padding: EdgeInsets.only(left: theme.spacing.xTiny),
-            child: Text(
-              title,
-              style: theme.text.title1.copyWith(fontWeight: FontWeight.w600),
+          if (displayBackButton) ...[
+            SmallIconButton(
+              onPressed: onBackPressed ?? () {},
+              alignmentOffset: const Offset(-1, 0),
+              icon: CupertinoIcons.back,
+            ),
+            const MediumGap(),
+          ],
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: theme.spacing.small),
+              child: Text(
+                title,
+                style: theme.text.title1.copyWith(fontWeight: FontWeight.w600),
+              ),
             ),
           ),
+          const XTinyGap(),
           Row(children: secondaryButtons),
         ],
       ),
