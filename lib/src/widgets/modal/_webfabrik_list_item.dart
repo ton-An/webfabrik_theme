@@ -1,8 +1,9 @@
 part of 'webfabrik_modal.dart';
 
 // ignore: unused_element
-class _WebfabrikListItem extends StatelessWidget {
-  const _WebfabrikListItem({
+class WebfabrikListItem extends StatelessWidget {
+  const WebfabrikListItem({
+    super.key,
     required this.title,
     required this.subtitle,
     required this.icon,

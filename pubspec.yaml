@@ -24,6 +24,8 @@ dependencies:
   link_text: ^0.2.1
   url_launcher: ^6.3.2
   intl: ^0.20.2
+  gradient_borders: ^1.0.2
+  flutter_svg: ^2.2.1
 
 dev_dependencies:
   flutter_test:
@@ -32,3 +34,6 @@ dev_dependencies:
 
 flutter:
   generate: true
+
+  assets:
+    - assets/images/logos/

@@ -1,4 +1,6 @@
 {
     "attributions": "Attributions",
-    "ok": "Ok"
+    "ok": "Ok",
+    "proudlyOpenSource": "Proudly Open Source",
+    "openSourceExplanation": "This means that the source code is publicly available. You are invited to contribute, report bugs or suggest new features."
 }

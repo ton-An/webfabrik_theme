@@ -40,4 +40,11 @@ class WebfabrikColors {
     Color.fromARGB(255, 255, 152, 0),
     Color.fromARGB(255, 244, 67, 54),
   ];
+  static const List<Color> secondaryGradient = [
+    Color.fromARGB(255, 156, 39, 176),
+    Color.fromARGB(255, 103, 58, 183),
+    Color.fromARGB(255, 63, 81, 181),
+    Color.fromARGB(255, 33, 150, 243),
+    Color.fromARGB(255, 0, 188, 212),
+  ];
 }
