@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:webfabrik_theme/src/l10n/webfabrik_localizations.dart';
 import 'package:webfabrik_theme/webfabrik_theme.dart';
 
 class Attribution {
@@ -11,9 +10,14 @@ class Attribution {
 }
 
 class AttributionLegend extends StatelessWidget {
-  const AttributionLegend({super.key, required this.attributions});
+  const AttributionLegend({
+    super.key,
+    required this.attributions,
+    this.additionalWidgets = const [],
+  });
 
   final List<Attribution> attributions;
+  final List<Widget> additionalWidgets;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +33,7 @@ class AttributionLegend extends StatelessWidget {
             WebfabrikDialog.show(
               context: context,
               title: WebfabrikLocalizations.of(context)!.attributions,
+              additionalWidgets: additionalWidgets,
               actions: [
                 WebfabrikDialogAction(
                   label: WebfabrikLocalizations.of(context)!.ok,
