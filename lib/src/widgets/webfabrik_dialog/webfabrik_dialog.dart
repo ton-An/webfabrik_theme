@@ -10,12 +10,13 @@ class WebfabrikDialog extends StatelessWidget {
     super.key,
     required this.title,
     required this.message,
+    required this.additionalWidgets,
     required this.actions,
   });
 
   final String title;
   final String message;
-
+  final List<Widget> additionalWidgets;
   final List<WebfabrikDialogAction> actions;
 
   @override
@@ -54,6 +55,10 @@ class WebfabrikDialog extends StatelessWidget {
                   ),
                   onLinkTap: (url) => launchUrlString(url),
                 ),
+
+                if (additionalWidgets.isNotEmpty) const XMediumGap(),
+                ...additionalWidgets,
+
                 const XMediumGap(),
 
                 Row(
@@ -83,6 +88,7 @@ class WebfabrikDialog extends StatelessWidget {
     required BuildContext context,
     required String title,
     required String message,
+    required List<Widget> additionalWidgets,
     required List<WebfabrikDialogAction> actions,
   }) {
     final WebfabrikThemeData theme = WebfabrikTheme.of(context);
@@ -127,6 +133,7 @@ class WebfabrikDialog extends StatelessWidget {
         return WebfabrikDialog(
           title: title,
           message: message,
+          additionalWidgets: additionalWidgets,
           actions: actions,
         );
       },
