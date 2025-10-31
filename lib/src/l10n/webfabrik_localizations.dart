@@ -108,6 +108,18 @@ abstract class WebfabrikLocalizations {
   /// In en, this message translates to:
   /// **'Ok'**
   String get ok;
+
+  /// No description provided for @proudlyOpenSource.
+  ///
+  /// In en, this message translates to:
+  /// **'Proudly Open Source'**
+  String get proudlyOpenSource;
+
+  /// No description provided for @openSourceExplanation.
+  ///
+  /// In en, this message translates to:
+  /// **'This means that the source code is publicly available. You are invited to contribute, report bugs or suggest new features.'**
+  String get openSourceExplanation;
 }
 
 class _WebfabrikLocalizationsDelegate

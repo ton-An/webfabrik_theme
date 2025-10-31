@@ -13,4 +13,11 @@ class WebfabrikLocalizationsEn extends WebfabrikLocalizations {
 
   @override
   String get ok => 'Ok';
+
+  @override
+  String get proudlyOpenSource => 'Proudly Open Source';
+
+  @override
+  String get openSourceExplanation =>
+      'This means that the source code is publicly available. You are invited to contribute, report bugs or suggest new features.';
 }
