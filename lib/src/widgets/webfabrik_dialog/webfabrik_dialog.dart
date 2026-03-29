@@ -23,6 +23,8 @@ class WebfabrikDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     final WebfabrikThemeData theme = WebfabrikTheme.of(context);
 
+    final double deviceHeight = MediaQuery.of(context).size.height;
+
     return Center(
       child: ClipRRect(
         borderRadius: BorderRadius.all(Radius.circular(theme.radii.xMedium)),
@@ -44,21 +46,29 @@ class WebfabrikDialog extends StatelessWidget {
                   ),
                 ),
                 const XXSmallGap(),
-                LinkText(
-                  message,
-                  textStyle: theme.text.callout.copyWith(
-                    color: theme.colors.hint,
+                ConstrainedBox(
+                  constraints: BoxConstraints(maxHeight: deviceHeight * 0.55),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        LinkText(
+                          message,
+                          textStyle: theme.text.callout.copyWith(
+                            color: theme.colors.hint,
+                          ),
+                          linkStyle: theme.text.callout.copyWith(
+                            color: theme.colors.hint,
+                            decoration: TextDecoration.underline,
+                          ),
+                          onLinkTap: (url) => launchUrlString(url),
+                        ),
+
+                        if (additionalWidgets.isNotEmpty) const XMediumGap(),
+                        ...additionalWidgets,
+                      ],
+                    ),
                   ),
-                  linkStyle: theme.text.callout.copyWith(
-                    color: theme.colors.hint,
-                    decoration: TextDecoration.underline,
-                  ),
-                  onLinkTap: (url) => launchUrlString(url),
                 ),
-
-                if (additionalWidgets.isNotEmpty) const XMediumGap(),
-                ...additionalWidgets,
-
                 const XMediumGap(),
 
                 Row(
