@@ -24,6 +24,7 @@ class OSSInfo extends StatelessWidget {
     final WebfabrikThemeData theme = WebfabrikTheme.of(context);
 
     return FadeTapDetector(
+      semanticLabel: WebfabrikLocalizations.of(context)!.proudlyOpenSource,
       onTap: () {
         launchUrlString(repositoryUrl);
       },

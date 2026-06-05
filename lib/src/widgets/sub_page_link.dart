@@ -19,6 +19,7 @@ class SubSettingsPageLink extends StatelessWidget {
 
     return FadeTapDetector(
       onTap: onPressed,
+      semanticLabel: 'Open $title',
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -32,6 +33,7 @@ class SubSettingsPageLink extends StatelessWidget {
                   icon: CupertinoIcons.forward,
                   onPressed: onPressed,
                   alignmentOffset: const Offset(1, 0),
+                  semanticLabel: 'Open $title',
                 ),
               ],
             ),

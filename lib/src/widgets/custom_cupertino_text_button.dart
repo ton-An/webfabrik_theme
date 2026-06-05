@@ -13,6 +13,7 @@ class CustomCupertinoTextButton extends StatelessWidget {
     this.disabledColor,
     this.isLoading,
     this.onPressed,
+    this.semanticLabel,
   });
 
   final String text;
@@ -21,6 +22,7 @@ class CustomCupertinoTextButton extends StatelessWidget {
   final Color? disabledColor;
   final bool? isLoading;
   final VoidCallback? onPressed;
+  final String? semanticLabel;
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +33,7 @@ class CustomCupertinoTextButton extends StatelessWidget {
       disabledColor: disabledColor,
       onPressed: onPressed,
       isLoading: isLoading,
+      semanticLabel: semanticLabel ?? text,
       child: Text(
         text,
         textAlign: TextAlign.center,

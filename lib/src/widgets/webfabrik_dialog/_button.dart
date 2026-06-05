@@ -17,6 +17,7 @@ class _Button extends StatelessWidget {
 
     return FadeTapDetector(
       onTap: onPressed,
+      semanticLabel: label,
       child: Container(
         padding: EdgeInsets.symmetric(vertical: theme.spacing.medium),
         decoration: BoxDecoration(

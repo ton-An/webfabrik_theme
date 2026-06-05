@@ -21,6 +21,7 @@ class FadeTapDetector extends StatefulWidget {
     this.behavior = HitTestBehavior.translucent,
     this.onTap,
     this.onLongPress,
+    this.semanticLabel,
   });
 
   /// How the gesture detector should behave during hit testing.
@@ -31,6 +32,9 @@ class FadeTapDetector extends StatefulWidget {
 
   /// Callback triggered when the widget is long-pressed.
   final VoidCallback? onLongPress;
+
+  /// Accessibility label that describes the tap target.
+  final String? semanticLabel;
 
   /// The widget below this widget in the tree that receives the tap and fade effect.
   final Widget child;
@@ -77,13 +81,26 @@ class _FadeTapDetectorState extends State<FadeTapDetector>
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    final Widget detector = GestureDetector(
       behavior: widget.behavior,
       onLongPress: widget.onLongPress,
       onTapDown: (_) => _onTapDown(),
       onTapUp: (_) => _onTapUp(),
       onTapCancel: _onTapCancel,
       child: FadeTransition(opacity: _fadeAnimation, child: widget.child),
+    );
+
+    if (widget.semanticLabel == null) {
+      return detector;
+    }
+
+    return Semantics(
+      label: widget.semanticLabel,
+      button: widget.onTap != null,
+      enabled: widget.onTap != null || widget.onLongPress != null,
+      onTap: widget.onTap,
+      onLongPress: widget.onLongPress,
+      child: detector,
     );
   }
 

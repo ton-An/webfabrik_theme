@@ -29,6 +29,7 @@ class AttributionLegend extends StatelessWidget {
         filter: theme.misc.blurFilter,
         child: FadeTapDetector(
           behavior: HitTestBehavior.translucent,
+          semanticLabel: WebfabrikLocalizations.of(context)!.attributions,
           onTap: () {
             WebfabrikDialog.show(
               context: context,
