@@ -12,6 +12,7 @@ class CustomCupertinoButton extends StatelessWidget {
     this.disabledColor,
     this.isLoading,
     this.onPressed,
+    this.semanticLabel,
   });
 
   final Widget child;
@@ -19,12 +20,13 @@ class CustomCupertinoButton extends StatelessWidget {
   final Color? disabledColor;
   final bool? isLoading;
   final VoidCallback? onPressed;
+  final String? semanticLabel;
 
   @override
   Widget build(BuildContext context) {
     final WebfabrikThemeData theme = WebfabrikTheme.of(context);
 
-    return SmoothClipRRect(
+    final Widget button = SmoothClipRRect(
       borderRadius: BorderRadius.circular(theme.radii.button),
       child: CupertinoButton(
         color: color ?? theme.colors.primary.withValues(alpha: .8),
@@ -43,6 +45,17 @@ class CustomCupertinoButton extends StatelessWidget {
           child: isLoading ?? false ? const LoadingIndicator() : child,
         ),
       ),
+    );
+
+    if (semanticLabel == null) {
+      return button;
+    }
+
+    return Semantics(
+      label: semanticLabel,
+      button: true,
+      enabled: onPressed != null,
+      child: button,
     );
   }
 }

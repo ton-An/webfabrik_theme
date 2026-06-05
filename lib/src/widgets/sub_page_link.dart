@@ -32,6 +32,7 @@ class SubSettingsPageLink extends StatelessWidget {
                   icon: CupertinoIcons.forward,
                   onPressed: onPressed,
                   alignmentOffset: const Offset(1, 0),
+                  semanticLabel: 'Open $title',
                 ),
               ],
             ),

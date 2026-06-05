@@ -32,6 +32,7 @@ class _Header extends StatelessWidget {
               onPressed: onBackPressed ?? () {},
               alignmentOffset: const Offset(-1, 0),
               icon: CupertinoIcons.back,
+              semanticLabel: 'Back',
             ),
             const MediumGap(),
           ],

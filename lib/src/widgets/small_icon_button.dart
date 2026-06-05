@@ -8,12 +8,14 @@ class SmallIconButton extends StatefulWidget {
     required this.onPressed,
     this.alignmentOffset = Offset.zero,
     this.backgroundColor,
+    this.semanticLabel,
   });
 
   final IconData icon;
   final VoidCallback onPressed;
   final Offset alignmentOffset;
   final Color? backgroundColor;
+  final String? semanticLabel;
 
   @override
   State<SmallIconButton> createState() => _SmallIconButtonState();
@@ -53,35 +55,41 @@ class _SmallIconButtonState extends State<SmallIconButton>
   Widget build(BuildContext context) {
     final WebfabrikThemeData theme = WebfabrikTheme.of(context);
 
-    return GestureDetector(
-      behavior: HitTestBehavior.translucent,
-      onTapDown: (_) {
-        _fadeController.forward();
-      },
-      onTapCancel: () {
-        _fadeController.forward().then((_) {
-          _fadeController.reverse();
-        });
-      },
-      onTapUp: (_) {
-        _fadeController.forward().then((_) {
-          _fadeController.reverse();
-        });
-        widget.onPressed();
-      },
-      child: Opacity(
-        opacity: _fadeAnimation.value,
-        child: Container(
-          padding: EdgeInsets.all(theme.spacing.xSmall),
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color:
-                widget.backgroundColor ??
-                theme.colors.translucentBackgroundContrast,
-          ),
-          child: Transform.translate(
-            offset: widget.alignmentOffset,
-            child: Icon(widget.icon, color: theme.colors.text),
+    return Semantics(
+      label: widget.semanticLabel,
+      button: true,
+      enabled: true,
+      onTap: widget.onPressed,
+      child: GestureDetector(
+        behavior: HitTestBehavior.translucent,
+        onTapDown: (_) {
+          _fadeController.forward();
+        },
+        onTapCancel: () {
+          _fadeController.forward().then((_) {
+            _fadeController.reverse();
+          });
+        },
+        onTapUp: (_) {
+          _fadeController.forward().then((_) {
+            _fadeController.reverse();
+          });
+          widget.onPressed();
+        },
+        child: Opacity(
+          opacity: _fadeAnimation.value,
+          child: Container(
+            padding: EdgeInsets.all(theme.spacing.xSmall),
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color:
+                  widget.backgroundColor ??
+                  theme.colors.translucentBackgroundContrast,
+            ),
+            child: Transform.translate(
+              offset: widget.alignmentOffset,
+              child: Icon(widget.icon, color: theme.colors.text),
+            ),
           ),
         ),
       ),
