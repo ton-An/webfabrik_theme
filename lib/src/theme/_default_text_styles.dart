@@ -5,101 +5,101 @@ part of 'webfabrik_theme.dart';
 /// The default text styles for the [WebfabrikTheme].
 class _DefaultTextStyles {
   static const TextStyle largeTitle = TextStyle(
-    fontFamily: '.SF Pro Display',
+    fontFamily: 'Inter',
+    package: 'webfabrik_theme',
     fontSize: 34,
     fontWeight: FontWeight.w400,
     height: 41 / 34,
-    letterSpacing: 0.37,
     color: CupertinoColors.label,
   );
 
   static const TextStyle title1 = TextStyle(
-    fontFamily: '.SF Pro Display',
+    fontFamily: 'Inter',
+    package: 'webfabrik_theme',
     fontSize: 28,
-    fontWeight: FontWeight.w400,
+    fontVariations: [FontVariation('wght', 400)],
     height: 34 / 28,
-    letterSpacing: 0.36,
     color: CupertinoColors.label,
   );
 
   static const TextStyle title2 = TextStyle(
-    fontFamily: '.SF Pro Display',
+    fontFamily: 'Inter',
+    package: 'webfabrik_theme',
     fontSize: 22,
-    fontWeight: FontWeight.w400,
+    fontVariations: [FontVariation('wght', 400)],
     height: 28 / 22,
-    letterSpacing: 0.35,
     color: CupertinoColors.label,
   );
 
   static const TextStyle title3 = TextStyle(
-    fontFamily: '.SF Pro Display',
+    fontFamily: 'Inter',
+    package: 'webfabrik_theme',
     fontSize: 20,
-    fontWeight: FontWeight.w400,
+    fontVariations: [FontVariation('wght', 400)],
     height: 25 / 20,
-    letterSpacing: 0.38,
     color: CupertinoColors.label,
   );
 
   static const TextStyle headline = TextStyle(
-    fontFamily: '.SF Pro Display',
+    fontFamily: 'Inter',
+    package: 'webfabrik_theme',
     fontSize: 17,
-    fontWeight: FontWeight.w600,
+    fontVariations: [FontVariation('wght', 600)],
     height: 22 / 17,
-    letterSpacing: -0.41,
     color: CupertinoColors.label,
   );
 
   static const TextStyle body = TextStyle(
-    fontFamily: '.SF Pro Text',
-    fontSize: 17,
-    fontWeight: FontWeight.w400,
+    fontFamily: 'Inter',
+    package: 'webfabrik_theme',
+    fontSize: 18,
+    fontVariations: [FontVariation('wght', 400)],
     height: 22 / 17,
-    letterSpacing: -0.41,
     color: CupertinoColors.label,
   );
 
   static const TextStyle callout = TextStyle(
-    fontFamily: '.SF Pro Text',
+    fontFamily: 'Inter',
+    package: 'webfabrik_theme',
     fontSize: 16,
-    fontWeight: FontWeight.w400,
+    fontVariations: [FontVariation('wght', 400)],
     height: 21 / 16,
-    letterSpacing: -0.32,
     color: CupertinoColors.label,
   );
 
   static const TextStyle subhead = TextStyle(
-    fontFamily: '.SF Pro Text',
+    fontFamily: 'Inter',
+    package: 'webfabrik_theme',
     fontSize: 15,
-    fontWeight: FontWeight.w400,
+    fontVariations: [FontVariation('wght', 400)],
     height: 20 / 15,
-    letterSpacing: -0.24,
     color: CupertinoColors.label,
   );
 
   static const TextStyle footnote = TextStyle(
-    fontFamily: '.SF Pro Text',
+    fontFamily: 'Inter',
+    package: 'webfabrik_theme',
     fontSize: 13.0,
-    fontWeight: FontWeight.w400,
+    fontVariations: [FontVariation('wght', 400)],
     height: 18 / 13,
-    letterSpacing: -0.08,
     color: CupertinoColors.label,
   );
 
   static const TextStyle caption1 = TextStyle(
-    fontFamily: '.SF Pro Text',
+    fontFamily: 'Inter',
+    package: 'webfabrik_theme',
     fontSize: 12,
-    fontWeight: FontWeight.w400,
+    fontVariations: [FontVariation('wght', 400)],
     height: 16 / 12,
-    letterSpacing: 0,
     color: CupertinoColors.label,
   );
 
   static const TextStyle caption2 = TextStyle(
-    fontFamily: '.SF Pro Text',
+    fontFamily: 'Inter',
+    package: 'webfabrik_theme',
     fontSize: 11,
-    fontWeight: FontWeight.w400,
+    fontVariations: [FontVariation('wght', 400)],
     height: 13 / 11,
-    letterSpacing: 0.07,
     color: CupertinoColors.label,
   );
 }
